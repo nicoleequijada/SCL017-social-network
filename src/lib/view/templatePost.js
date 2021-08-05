@@ -8,7 +8,7 @@ export const postElement = (postId , postData) => {
    const timeString = postDate.toLocaleTimeString();
   
    const newPosting = `
-    <div class="post-head" id="${postId}">
+   <div class="post-head" id="${postId}">
       <img class="user-photo"src="${postData.photo}">
       <div class="name-posting">${postData.displayname} ha compartido: </div>
       <div class="icon-remove">
