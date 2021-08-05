@@ -2,22 +2,24 @@ import { login } from './view/templateLogin.js'
 import { register } from './view/templateRegister.js'
 import { timeLine } from './view/templateTimeLine.js'
 import { footer } from './view/templateFooter.js'
-import { firestoreRead, firestoreSave, firestoreLike } from './database/firestore.js'
+
+import { firestoreRead, firestoreSave, firestoreDelete, firestoreLike } from './database/firestore.js'
 import { createUserWithPassword, signInWithPassword, signInWithGoogle, currentUser } from './auth/authetication.js';
+//import {eliminar} from './database/firestore.js'//
 
 //cambiar la url para que no se vea el gatito
 export const changeRoute = (hash) => {
-    // hash = '#/register
-    hash = hash.replace('#', '');
-    // hash = '/register'
+  // hash = '#/register
+  hash = hash.replace('#', '');
+  // hash = '/register'
 
-    window.history.replaceState({}, hash.replace('/', ''), hash);
-    // hash.replace('/', '') == 'register'
-    // /register
-    return showTemplate(hash);
+  window.history.replaceState({}, hash.replace('/', ''), hash);
+  // hash.replace('/', '') == 'register'
+  // /register
+  return showTemplate(hash);
 }
 
-export const showTemplate = (hash) => {
+export const showTemplate = async(hash) => {
     const containerRoot = document.getElementById('root');
 
     // Aquí se carga el footer una sola vez
@@ -123,16 +125,17 @@ export const showTemplate = (hash) => {
 
            
             firestoreSave("posts", postData);
-            firestoreRead();
+
             window.history.replaceState({}, 'posting', '/posting');
+            showTemplate('/posting');
     }
 };
        
-
-
-
-
-
-
-
-
+      if (hash.startsWith('/deletePost')) {
+      const docId = hash.replace('/deletePost/', '');
+      await firestoreDelete(docId);
+      
+      window.history.replaceState({}, 'posting', '/posting');
+      showTemplate('/posting');
+    }
+};

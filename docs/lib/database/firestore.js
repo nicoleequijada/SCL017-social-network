@@ -21,7 +21,7 @@ export const firestoreRead = () => {
             // console.log(`${doc.id} => ${doc.data()}`);
             
             
-            const containerOnePost = postElement(doc.data());
+            const containerOnePost = postElement(doc.data(), doc.id);
             
             containerPosts.appendChild(containerOnePost);
             
@@ -29,6 +29,15 @@ export const firestoreRead = () => {
             
             
         });
+    });
+}
+
+//Eliminar post//
+export const firestoreDelete = async (docId) => {
+    await firebase.firestore().collection("posts").doc(docId).delete().then(() => {
+        console.log("Document successfully deleted!");
+    }).catch((error) => {
+        console.error("Error removing document: ", error);
     });
 }
 

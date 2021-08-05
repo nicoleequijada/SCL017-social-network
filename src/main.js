@@ -8,10 +8,10 @@ const init = () => {
     }
 
     window.onpopstate = () => {
-        if (window.location.hash === '') {
+        if (!window.location.hash.includes('#')) {
             showTemplate(window.location.pathname);
         }
-    }
+    }  
     
     window.addEventListener('hashchange', () => {
         changeRoute(window.location.hash);
