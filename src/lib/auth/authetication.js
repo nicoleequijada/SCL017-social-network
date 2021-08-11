@@ -1,6 +1,6 @@
 import { urlSite } from '../config/globalSettings.js';
 
-export const createUserWithPassword = (email, password, names) => {
+export  const createUserWithPassword = (email, password, names) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       const user = userCredential.user;

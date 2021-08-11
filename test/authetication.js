@@ -12,3 +12,9 @@ export function signInWithPassword(email, password) {
         }
     );
 };
+
+export const currentUser = () => {
+    const user = firebase.auth().currentUser;
+    return user;
+  };
+  

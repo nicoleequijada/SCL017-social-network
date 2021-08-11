@@ -30,28 +30,11 @@ export const showTemplate = async (hash) => {
         } else if ((password.length === 0)) {
           alert('Por favor ingrese su contraseña');
         } else {
-          signInWithPassword(email, password).then((userCredential) => {
-            const user = userCredential.user;
-            if (user.emailVerified) {
-              alert(`bienvenido ${user.displayName}`);
-              window.location = '#/posting';
-            } else {
-              alert('debes verificar tu cuenta antes de continuar');
-              firebase.auth().signOut();
-            }
-          }).catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert(`no se ha podido iniciar sesion error:${errorCode} ${errorMessage}`);
-          });
+          signInWithPassword(email, password);
         }
       });
       document.getElementById('iniciarConGoogle').addEventListener('click', () => {
-        signInWithGoogle()    .then(() => {
-          window.location = '#/posting';
-        }).catch((err) => {
-          console.log(err);
-        });;
+        signInWithGoogle();
       });
       break;
     case '/register':
@@ -91,7 +74,7 @@ export const showTemplate = async (hash) => {
         const archivo = new FileReader();
         if (this.files && this.files[0]) {
           archivo.onload = function (e) {
-            // Aqui se realiza la previsualizacion de nuestra imagen
+          // Aqui se realiza la previsualizacion de nuestra imagen
             const imagePreview = document.getElementById('imagenPrevisualizacion');
             imagePreview.style.width = '50%';
             // imagePreview.style.height = '100%';
@@ -139,7 +122,7 @@ export const showTemplate = async (hash) => {
       // conexion normal
       if (userActive.photoURL === undefined) {
         userImage = 'img/avatar.png';
-        // conexion por google
+      // conexion por google
       } else {
         userImage = userActive.photoURL;
       }
