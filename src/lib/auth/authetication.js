@@ -31,32 +31,13 @@ export const createUserWithPassword = (email, password, names) => {
       alert(`Se produjo un error al crear cuenta. Error: ${errorMessage} ${errorCode}`);
     });
 };
-export const signInWithPassword = (email, password) => {
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      if (user.emailVerified) {
-        alert(`bienvenido ${user.displayName}`);
-        window.location = '#/posting';
-      } else {
-        alert('debes verificar tu cuenta antes de continuar');
-        firebase.auth().signOut();
-      }
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(`no se ha podido iniciar sesion error:${errorCode} ${errorMessage}`);
-    });
+export async function signInWithPassword(email, password) {
+  return await firebase.auth().signInWithEmailAndPassword(email, password);
 };
-export const signInWithGoogle = () => {
+export async function signInWithGoogle() {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider)
-    .then(() => {
-      window.location = '#/posting';
-    }).catch((err) => {
-      console.log(err);
-    });
+  return await firebase.auth().signInWithPopup(provider)
+
 };
 
 export const currentUser = () => {
