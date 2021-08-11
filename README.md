@@ -3,7 +3,7 @@
 ## 1. Descripción general
 Mochileando es una red social inspirada en los amantes a la naturaleza y aventuras, donde podras interactuar con todos los usuarios que tengan los mismos interesés que tú, compartir tips de viajes, recomendar lugares para acampanar e incluso hacer un grupo para compartir gastos de viaje.
 
-* Link de proyecto GH-pages: 
+* Link de proyecto GH-pages: https://mochileando-scl-017.web.app
 
 ## 2. Imagen final del proyecto
 
