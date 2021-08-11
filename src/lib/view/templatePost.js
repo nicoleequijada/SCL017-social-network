@@ -20,28 +20,31 @@ export const postElement = (postId, postData, countLikes, dataLike) => {
     newImageUpload.src = postData.photoUpload;
     newDivWithImage.appendChild(newImageUpload);
   }
+
   const newPosting = `
-  <div class="post-head" id="${postId}">
-  <img class="user-photo"src="${postData.photo}">
-  <div class="name-posting">${postData.displayname} ha compartido: </div>
-  <div class="icon-remove">
-  <button class="icon-pencil" onclick="window.location='#/editPost/${postId}'"></button>
-  <button class="icon-bin" onclick="window.location='#/deletePost/${postId}'"></button>
-  </div>
-  </div>
-  <div class="date">
-  ${dateString} ${timeString}
-  </div>
-  <div class="posting">
-  <p class="content">${postData.content}</p>
-  <br />
-  ${newDivWithImage.innerHTML}
-  </div>
-  <hr>
-  <div class="icons">
-  <a class="icon-heart like ${className}">${countLikes}</a>
-  </div>
-  <hr>`;
+    <div class="post-head" id="${postId}">
+      <img class="user-photo"src="${postData.photo}">
+      <div class="name-posting">${postData.displayname} ha compartido: </div>
+      <div class="icon-remove">
+        <button class="icon-pencil editar"></button>
+        <button class="icon-bin" onclick="window.location='#/deletePost/${postId}'"></button>
+      </div>
+    </div>
+    <div class="date">
+      ${dateString} ${timeString}
+    </div>
+    <div class="posting">
+      <p class="content">${postData.content}</p>
+      <br />
+      ${newDivWithImage.innerHTML}
+    </div>
+    <hr>
+    <div class="icons">
+      <a class="icon-heart like ${className}">${countLikes}</a>
+    </div>
+    <hr>`;
+
   posting.innerHTML = newPosting;
+
   return posting;
 };

@@ -537,7 +537,7 @@ footer p {
 }
 
 .posting .content {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 input[type="file"] {
@@ -554,7 +554,6 @@ input[type="file"] {
 .posting .image-upload {
   border-radius: 5px;
   width: 75%;
-  height: 300px;
 }
 
 .time-line {
@@ -634,11 +633,20 @@ input[type="file"] {
   cursor: pointer;
   text-decoration: none;
 }
+
+#shared2{
+  display:none;
+  width: 15%;
+  border-radius: 5px;
+  border: 1px solid;
+  padding: 3px;
+}
+
 .icon-heart .like{
   color: #000000;
 }
 
-.icon-heart .active {
+.active {
   color: red
 }
 
@@ -681,6 +689,8 @@ input[type="file"] {
     font-size: 0.8rem;
     margin-top: 10px;
   }
+ 
+
   .img-profile img {
     width: 80px;
   }
@@ -746,8 +756,16 @@ input[type="file"] {
   .post-head .user-photo {
     border-radius: 50%;
     width: 60px;
+    margin-bottom: 10px;
   }
   .icon-user, .icon-newspaper, .icon-exit {
     margin-left: 0px;
   }
+  .posting .image-upload {
+    width: 100%;
+  }
+  .posting .content {
+    font-size: 1rem;
+  }
+  
 }

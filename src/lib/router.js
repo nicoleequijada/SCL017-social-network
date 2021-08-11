@@ -2,6 +2,7 @@ import { login } from './view/templateLogin.js';
 import { register } from './view/templateRegister.js';
 import { timeLine } from './view/templateTimeLine.js';
 import { footer } from './view/templateFooter.js';
+import { editPost, editPostInput } from './controllers/posts/edit.js'
 import { firestoreRead, firestoreSave, firestoreDelete } from './database/firestore.js';
 import {
   createUserWithPassword, signInWithPassword, signInWithGoogle, currentUser,
@@ -92,15 +93,39 @@ export const showTemplate = async (hash) => {
           archivo.onload = function (e) {
             // Aqui se realiza la previsualizacion de nuestra imagen
             const imagePreview = document.getElementById('imagenPrevisualizacion');
-            imagePreview.style.width = '200px';
-            imagePreview.style.height = '100px';
+            imagePreview.style.width = '50%';
+            // imagePreview.style.height = '100%';
             imagePreview.src = e.target.result;
             localStorage.setItem('imageUpload', e.target.result);
           };
         }
         archivo.readAsDataURL(this.files[0]);
       });
-      firestoreRead();
+
+      await firestoreRead();
+
+      const loQueDebeHacerElBotonDeEditar = (e) => {
+        const botonDePublicar = document.getElementById('shared');
+        botonDePublicar.style = 'display: none';
+
+        const botonDeEditar = document.getElementById('shared2');
+        botonDeEditar.style = 'display: block';
+
+
+        editPostInput(e);
+      }
+
+      const timer = setInterval(() => {
+        const botonesDeEditar = document.getElementsByClassName("editar");
+        for (var i = 0; i < botonesDeEditar.length; i++) {
+            botonesDeEditar[i].addEventListener('click', e => loQueDebeHacerElBotonDeEditar(e), false);
+        }
+
+        if (botonesDeEditar.length != 0) {
+          clearInterval(timer);
+        }
+      }, 1000)
+
       break;
     case '/savePost':
       // Obtenemos desde el Storage del Navegador la variable imageUpload con la imagen cargada
@@ -132,9 +157,16 @@ export const showTemplate = async (hash) => {
       window.history.replaceState({}, 'posting', '/posting');
       showTemplate('/posting');
       break;
+    case '/editPost':
+      await editPost();
+
+      window.history.replaceState({}, 'posting', '/posting');
+      showTemplate('/posting');
+      break;
     default:
       break;
   }
+
   // Eliminar post //
   if (hash.startsWith('/deletePost')) {
     const docId = hash.replace('/deletePost/', '');
@@ -145,11 +177,7 @@ export const showTemplate = async (hash) => {
 };
 // cambiar la url para que no se vea el gatito
 export const changeRoute = (hash) => {
-  // hash = '#/register
   const hashCopy = hash.replace('#', '');
-  // hash = '/register'
   window.history.replaceState({}, hashCopy.replace('/', ''), hashCopy);
-  // hash.replace('/', '') == 'register'
-  // /register
   return showTemplate(hashCopy);
 };
