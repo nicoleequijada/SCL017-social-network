@@ -13,4 +13,12 @@ describe('signInWithPassword', () => {
       expect(res.user.emailVerified).toBe(true)
     })
   });
+  it('es una funcion', () => {
+    expect(typeof currentUser).toBe('function')
+  })
+  it('retornar user', () => {
+    expect(currentUser).toBe(user)
+  })
+
+
 });
