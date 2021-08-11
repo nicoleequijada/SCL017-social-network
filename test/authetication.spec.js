@@ -8,7 +8,7 @@ describe('signInWithPassword', () => {
   });
 
   it('debería logearse y que el usuario verifico su email', () => {
-    signInWithPassword().then(res => {
+    signInWithPassword('nataly.fariasg@gmail.com', '12345678').then(res => {
       // const responseSign = JSON.parse(JSON.stringify(res));
       expect(res.user.emailVerified).toBe(true)
     })
@@ -19,5 +19,4 @@ describe('signInWithPassword', () => {
   it('retornar user', () => {
     expect(currentUser).toBe(user)
   })
-
 });
