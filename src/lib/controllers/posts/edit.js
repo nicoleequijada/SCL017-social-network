@@ -1,19 +1,25 @@
 import { firestoreEdit } from "../../database/firestore.js";
 
 export const editPostInput = (e) => {
-    const posting = e.srcElement.closest('.post').querySelector(".content").innerHTML;
-    const post = document.getElementById('post');
-    post.value = posting;
+  const posting = e.srcElement.closest('.post').querySelector(".content").innerHTML;
+  const post = document.getElementById('post');
+  post.value = posting;
+
+  const postId = e.srcElement.closest('.post').querySelector(".post-head").id;
+  const hiddenPostId = document.getElementById('postId');
+  hiddenPostId.value = postId;
 }
 
-export const editPost = async (currentUser) => {
-  const content = document.getElementById('post').value;
-  const docId = 'tienes que buscar el id del post';
+export const editPost = async () => {
 
-  const postAEditar = {
-    content: content,
-    useruid: currentUser.uid
-  };
+  await firebase.auth().onAuthStateChanged(async (user) => {
+    const content = document.getElementById('post').value;
+    const docId = document.getElementById('postId').value;
+    const postAEditar = {
+      content: content,
+      useruid: user.uid
+    };
 
-  await firestoreEdit(docId, postAEditar);
-}
+    await firestoreEdit(docId, postAEditar);
+  });
+};

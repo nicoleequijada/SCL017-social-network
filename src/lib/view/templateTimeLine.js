@@ -15,6 +15,7 @@ export const timeLine = () => {
       </label>
       <input id="updload-image" type="file" accept="image/*" style="margin-top: 30px">
       <img id="imagenPrevisualizacion">
+      <input type="hidden" name="postId" id="postId" value=""/>
       <button id="shared" class="shared" onclick="window.location='#/savePost'">Publicar</button>
       <button id="shared2" class="shared2" onclick="window.location='#/editPost'">Editar</button>
       <div id="container-posts"></div>

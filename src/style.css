@@ -634,9 +634,14 @@ input[type="file"] {
   text-decoration: none;
 }
 
-#shared2 {
-  display: none;
+#shared2{
+  display:none;
+  width: 15%;
+  border-radius: 5px;
+  border: 1px solid;
+  padding: 3px;
 }
+
 .icon-heart .like{
   color: #000000;
 }

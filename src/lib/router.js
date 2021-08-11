@@ -141,7 +141,7 @@ export const showTemplate = async (hash) => {
       showTemplate('/posting');
       break;
     case '/editPost':
-      editPost(currentUser());
+      await editPost();
 
       window.history.replaceState({}, 'posting', '/posting');
       showTemplate('/posting');

@@ -112,18 +112,9 @@ export const firestoreDelete = async (docId) => {
 
 //Editar post//
 export const firestoreEdit = async (docId, post) => {
-
-     await firebase.firestore().collection("posts").doc(docId);
-    // // set the "capital" field of the city 'DC'
-     return firestoreEdit.update({
-        content: post.content,
-        useruid: post.uid
-    })
-        .then(() => {
-        console.log("Document successfully updated!");
-    })
-        .catch((error) => {
-        // The document probably doesn't exist.
-        console.error("Error updating document: ", error);
-   });
+  const doc = await firebase.firestore().collection('posts').doc(docId)
+  return await doc.update({
+      content: post.content,
+      useruid: post.useruid
+  });
 }
