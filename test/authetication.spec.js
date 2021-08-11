@@ -1,5 +1,5 @@
 // importamos la funcion que vamos a testear
-import { signInWithPassword } from '../src/lib/auth/authetication';
+import { currentUser, signInWithPassword } from '../src/lib/auth/authetication';
 jest.mock("./authetication")
 
 describe('signInWithPassword', () => {
@@ -19,6 +19,4 @@ describe('signInWithPassword', () => {
   it('retornar user', () => {
     expect(currentUser).toBe(user)
   })
-
-
 });
