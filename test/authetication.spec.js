@@ -19,6 +19,4 @@ describe('signInWithPassword', () => {
   it('retornar user', () => {
     expect(currentUser).toBe(user)
   })
-
-
 });
