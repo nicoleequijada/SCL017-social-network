@@ -20,13 +20,18 @@ Mochileando es una red social inspirada en los amantes a la naturaleza y aventur
 <img width="976" alt="historia de usuario 2" src="https://user-images.githubusercontent.com/72900415/128640814-1e9aeee1-e393-4f5d-b5af-6d1c4a568628.png">
 
 
-## 4. Prototipos de alta fidelidad
+## 4. Test de usabilidad 
+
+<img width="766" alt="Screen Shot 2021-08-12 at 11 42 29 AM" src="https://user-images.githubusercontent.com/72900415/129226983-c6f24286-8c0b-4e53-9df9-6f1cbefee5a4.png">
+
+
+## 5. Prototipos de alta fidelidad
 
 <img width="1230" alt="Screen Shot 2021-08-11 at 8 13 42 PM" src="https://user-images.githubusercontent.com/72900415/129119522-1d1b03d4-512e-4b83-8410-c234b293e9e1.png">
 <img width="1228" alt="Screen Shot 2021-08-11 at 8 13 56 PM" src="https://user-images.githubusercontent.com/72900415/129119489-271bef26-21d4-4da3-8568-8f015c9a0907.png">
 <img width="1228" alt="Screen Shot 2021-08-11 at 8 14 08 PM" src="https://user-images.githubusercontent.com/72900415/129119533-834c2e64-8eb5-48e9-9942-ec15dd255867.png">
 
-## 5. Objetivos de aprendizaje
+## 6. Objetivos de aprendizaje
 
 El objetivo principal de aprendizaje de este proyecto es construir una
 [Single-page Application (SPA)](https://es.wikipedia.org/wiki/Single-page_application)
